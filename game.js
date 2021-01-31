@@ -87,16 +87,16 @@ export default class Game extends Phaser.Scene {
     
     //Creo el trigger
    
-    this.trigger = this.matter.add.circle(this.sys.game.canvas.width/2,this.sys.canvas.height/2 -80, 24, {isSensor: true})
+    this.trigger = this.matter.add.rectangle(this.sys.game.canvas.width/2,this.sys.canvas.height/2 -80, 120, 40, {isSensor: true})
     console.log(this.trigger);
     this.trigger.isStatic = true;
 
-    this.player.setOnCollideWith( this.player,  () =>{
+    this.player.setOnCollideWith( this.trigger,  () =>{
       console.log("soy un trigger");
     })
 
     this.trigger.onCollideCallback = () =>{
-     
+     console.log("holi")
     }
     this.player.setCollidesWith([this.plataformas, this.trigger, 1])
     // this.trigger.setCollidesWith([this.plataformas, this.playerGroup]);
@@ -109,7 +109,6 @@ export default class Game extends Phaser.Scene {
       
         if(true){
           this.tocaSuelo = true;
-          console.log("activar salto");
         }
          
        })
